@@ -1,0 +1,40 @@
+import plantas.*
+
+test "plantas" {
+	const menta = new Menta(altura=1, anio =0)
+	assert.that(menta.daSemillas())
+	assert.equals(2,menta.espacioOcupado())
+	assert.equals(7, menta.toleranciaSol())  /////////////////
+	
+	const menta2= new Menta(altura=0.3, anio=0)
+	assert.notThat(menta2.daSemillas())
+	assert.equals(1.3,menta2.espacioOcupado())
+	assert.equals(7, menta2.toleranciaSol())	//////////////
+	
+	const soja1= new Soja(altura = 0.6, anio = 2009)
+	assert.notThat(soja1.daSemillas())
+	assert.equals(0.3,soja1.espacioOcupado())
+	assert.equals(8, soja1.toleranciaSol())
+	
+	const quinoa1= new Quinoa(altura=0, anio = 2010,espacioOcupado=0.2)
+	assert.that(quinoa1.daSemillas())
+	assert.equals(10, quinoa1.toleranciaSol())   //////////////////
+	
+	const quinoa2= new Quinoa(altura=0, anio = 2003,espacioOcupado=0.9)
+	assert.that(quinoa2.daSemillas())
+	assert.equals(7, quinoa2.toleranciaSol())   ///////////////////
+	
+	const hierbaB= new Hierbabuena(altura=0.3, anio=0)
+	assert.that(hierbaB.daSemillas())
+	assert.equals(2.6,hierbaB.espacioOcupado())
+	assert.equals(7, hierbaB.toleranciaSol())
+	
+	const sojaT= new SojaTransgenica(altura = 2, anio = 2009)
+	assert.notThat(sojaT.daSemillas())
+	assert.equals(1,sojaT.espacioOcupado())
+	assert.equals(12, sojaT.toleranciaSol())
+	
+	
+	
+	
+}

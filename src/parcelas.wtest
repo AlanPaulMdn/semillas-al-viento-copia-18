@@ -1,0 +1,33 @@
+import parcelas.*
+import plantas.*
+
+test "Parcelas" {
+
+	const parcela1 = new Parcela(ancho = 10 , largo = 1 , horasSol = 10)
+	assert.equals(5,parcela1.plantasToleradas())
+	assert.equals(10,parcela1.superficie())
+	
+	const soja1= new Soja(altura = 2, anio = 2009)
+	const soja2= new Soja(altura = 2, anio = 2009)
+	const soja3= new Soja(altura = 2, anio = 2009)
+	const soja4= new Soja(altura = 2, anio = 2009)
+	const soja5= new Soja(altura = 2, anio = 2009)
+	const soja6= new Soja(altura = 2, anio = 2009)
+	
+	parcela1.plantar(soja1)
+	parcela1.plantar(soja2)
+	parcela1.plantar(soja3)
+	parcela1.plantar(soja4)
+	
+	assert.notThat(parcela1.estaCompleta())
+	
+	parcela1.plantar(soja5)
+	
+	assert.that(parcela1.estaCompleta())
+	assert.notThat(parcela1.tieneComplicaciones())
+	
+	parcela1.plantar(soja6) // error por consola
+	
+	
+
+}
