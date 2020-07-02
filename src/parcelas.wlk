@@ -22,8 +22,29 @@ class Parcela {
 		else {console.println("No se puede realizar la plantación")}
 	}
 	
-	method estaCompleta()=
-		plantas.size() == self.plantasToleradas()
+	method cantPlantas()= plantas.size()
 	
+	method estaCompleta()=
+		self.cantPlantas() == self.plantasToleradas()
+	
+	method tienePlantaMayorA(num)=
+		plantas.any({p => p.altura() > num })
+	
+	method seAsociaBien(planta)
+	
+	method cantBienAsociadas()=
+		plantas.count({p => self.seAsociaBien(p)})
 		
+	method porcentajeBienAsociadas()=
+		self.cantBienAsociadas() *100 / self.cantPlantas() /*CHECKEAR */
+}
+
+class Ecologica inherits Parcela {
+	override method seAsociaBien(planta)=
+		not self.tieneComplicaciones() and planta.esIdeal(self)
+}
+
+class Industrial inherits Parcela {
+	override method seAsociaBien(planta)=
+		self.cantPlantas() <= 2  and  planta.esFuerte()
 }

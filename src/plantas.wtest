@@ -34,7 +34,7 @@ test "plantas" {
 	assert.equals(1,sojaT.espacioOcupado())
 	assert.equals(12, sojaT.toleranciaSol())
 	
-	
+	/////////////////Agregar a las plantas la capacidad de decir si una parcela le resulta ideal.
 	
 	
 }
