@@ -1,0 +1,37 @@
+import plantas.*
+import parcelas.*
+import inta.*
+
+test "INTA" {
+
+	const soja1= new Soja(altura = 2, anio = 2009)
+	const soja2= new Soja(altura = 2, anio = 2009)
+	const soja3= new Soja(altura = 2, anio = 2009)
+	const soja4= new Soja(altura = 2, anio = 2009)
+	const soja5= new Soja(altura = 2, anio = 2009)
+	const soja6= new Soja(altura = 2, anio = 2009)
+	
+	
+	const parcela1 = new Ecologica(ancho = 10 , largo = 1 , horasSol = 10)
+	const parcela2 = new Ecologica(ancho = 10 , largo = 1 , horasSol = 10)
+	const parcela3 = new Ecologica(ancho = 10 , largo = 1 , horasSol = 10)
+	
+	
+	
+	
+	parcela2.plantar(soja3)
+	
+	parcela3.plantar(soja4)
+	parcela3.plantar(soja5)
+	parcela3.plantar(soja6)
+	parcela3.plantar(soja2)
+	parcela3.plantar(soja1)
+	
+	inta.sumar(parcela1)
+	inta.sumar(parcela2)
+	inta.sumar(parcela3)
+	
+	assert.equals(2, inta.promedioPlantas())
+	assert.equals(parcela3 , inta.masAutosustentable())
+
+}

@@ -1,11 +1,13 @@
 import parcelas.*
 import plantas.*
 
-test "Parcelas" {
+test "Parcela ECO" {
 
-	const parcela1 = new Parcela(ancho = 10 , largo = 1 , horasSol = 10)
+	const parcela1 = new Ecologica(ancho = 10 , largo = 1 , horasSol = 10)
 	assert.equals(5,parcela1.plantasToleradas())
 	assert.equals(10,parcela1.superficie())
+	
+	const menta1 = new Menta(altura=1, anio =0)
 	
 	const soja1= new Soja(altura = 2, anio = 2009)
 	const soja2= new Soja(altura = 2, anio = 2009)
@@ -13,6 +15,8 @@ test "Parcelas" {
 	const soja4= new Soja(altura = 2, anio = 2009)
 	const soja5= new Soja(altura = 2, anio = 2009)
 	const soja6= new Soja(altura = 2, anio = 2009)
+	
+	assert.that(parcela1.seAsociaBien(menta1))
 	
 	parcela1.plantar(soja1)
 	parcela1.plantar(soja2)
@@ -28,6 +32,36 @@ test "Parcelas" {
 	
 	parcela1.plantar(soja6) // error por consola
 	
+	assert.that(parcela1.tienePlantaMayorA(1))
+	assert.notThat(parcela1.tienePlantaMayorA(2))
 	
+	assert.equals(0,parcela1.cantBienAsociadas())
+	assert.equals(5,parcela1.cantPlantas())
+	
+	parcela1.desplantar(soja5)
+	assert.equals(4,parcela1.cantPlantas())
+	
+	const menta = new Menta(altura=1, anio =0)
+	parcela1.plantar(menta)
+	assert.equals(5,parcela1.cantPlantas())
+	assert.that(parcela1.tieneComplicaciones())
+	assert.equals(0,parcela1.cantBienAsociadas()) //porque menta tolera 7 de sol
+}
 
+test "Parcela INDUSTRIAL" {
+	const parcela2 = new Industrial(ancho = 10 , largo = 1 , horasSol = 10)
+	assert.equals(5,parcela2.plantasToleradas())
+	assert.equals(10,parcela2.superficie())
+	
+	const soja1= new Soja(altura = 2, anio = 2009)
+	const soja2= new Soja(altura = 2, anio = 2009)
+	const soja3= new Soja(altura = 2, anio = 2009)
+	
+	parcela2.plantar(soja1)
+	
+	assert.that(soja2.esFuerte())
+	assert.that(parcela2.seAsociaBien(soja2))
+	
+	
+	
 }

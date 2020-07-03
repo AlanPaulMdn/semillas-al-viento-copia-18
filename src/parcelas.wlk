@@ -3,7 +3,7 @@ import plantas.*
 class Parcela {
 	const property ancho
 	const property largo
-	const property horasSol = 0 //inicializo porque wollok tira error sino
+	const property horasSol 
 	const property plantas = #{}
 	
 	method superficie()= ancho * largo
@@ -22,6 +22,9 @@ class Parcela {
 		else {console.println("No se puede realizar la plantación")}
 	}
 	
+	method desplantar(planta){
+		if ( plantas.contains(planta)){ plantas.remove(planta)}
+	}
 	method cantPlantas()= plantas.size()
 	
 	method estaCompleta()=
